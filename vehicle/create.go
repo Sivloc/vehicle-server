@@ -3,9 +3,9 @@ package vehicle
 import (
 	"net/http"
 
-	"github.com/cicd-lectures/vehicle-server/pkg/httputil"
-	"github.com/cicd-lectures/vehicle-server/storage"
-	"github.com/cicd-lectures/vehicle-server/storage/vehiclestore"
+	"github.com/Sivloc/vehicle-server/pkg/httputil"
+	"github.com/Sivloc/vehicle-server/storage"
+	"github.com/Sivloc/vehicle-server/storage/vehiclestore"
 	"go.uber.org/zap"
 )
 
