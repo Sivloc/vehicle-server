@@ -4,17 +4,6 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
-    container:
-      image: ghcr.io/cicd-lectures/gitpod:latest
-      env:
-        NODE_ENV: development
-      ports: 
-        - 80
-      volumes:
-        - my_docker_volume:/volume_mount
-      options: 
-        --cpus 1
-        --user=root
     steps:
       - run: sudo apt install cowsay -y
       - uses: actions/checkout@v4
@@ -22,5 +11,14 @@ jobs:
           sparse-checkout: |
             README.md
           sparse-checkout-cone-mode: false
-      - run: ls -l # Liste les fichier du répertoire courant
-      - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
+      - name: Read Package.json
+        id: package 
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: README.md
+      - name: Echo README
+        run: echo "${{ steps.package.outputs.content }}"
+      - name: La vache fait meuh
+        uses: Code-Hex/neo-cowsay-action@v1
+        with: 
+          message: "${{ steps.package.outputs.content }}"
