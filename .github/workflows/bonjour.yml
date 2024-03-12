@@ -6,19 +6,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
         with:
-          sparse-checkout: |
-            README.md
-          sparse-checkout-cone-mode: false
-      - name: Read Package.json
-        id: package 
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: README.md
-      - name: Echo README
-        run: echo "${{ steps.package.outputs.content }}"
-      - name: La vache fait meuh
-        uses: Code-Hex/neo-cowsay-action@v1
-        with: 
-          message: "${{ steps.package.outputs.content }}"
-          options: random
+          go-version-file:  '../../go.mod'
+      - run: go version 
+      - name: Makefile execution
+        run: make all
