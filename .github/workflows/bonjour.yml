@@ -12,7 +12,9 @@ jobs:
         - 80
       volumes:
         - my_docker_volume:/volume_mount
-      options: --cpus 1
+      options: 
+        --cpus 1
+        --user=root
     steps:
       - run: sudo apt install cowsay -y
       - uses: actions/checkout@v4
