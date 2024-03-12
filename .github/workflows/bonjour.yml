@@ -4,6 +4,15 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/cicd-lectures/gitpod:latest
+      env:
+        NODE_ENV: development
+      ports: 
+        - 80
+      volumes:
+        - my_docker_volume:/volume_mount
+      options: --cpus 1
     steps:
       - run: sudo apt install cowsay -y
       - uses: actions/checkout@v4
