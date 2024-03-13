@@ -50,3 +50,5 @@ stop_dev_db:
 	docker container stop $(DB_CONTAINER_NAME)
 package: 
 	docker build -t $(IMAGE):$(TAG) .
+release: 
+	docker push $(IMAGE):$(TAG) .
