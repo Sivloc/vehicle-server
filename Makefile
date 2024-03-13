@@ -1,4 +1,4 @@
-IMAGE?=Sivloc/vehicle-server
+IMAGE?=sivloc/vehicle-server
 TAG?=dev
 
 .PHONY: all
@@ -49,4 +49,4 @@ dev_db:
 stop_dev_db:
 	docker container stop $(DB_CONTAINER_NAME)
 package: 
-	docker build -t vehicle_docker .
+	docker build -t $(IMAGE):$(TAG) .
