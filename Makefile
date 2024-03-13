@@ -1,5 +1,8 @@
+IMAGE?=Sivloc/vehicle-server
+TAG?=dev
+
 .PHONY: all
-all: clean dist build unit_test integration_test
+all: clean dist build unit_test integration_test package
 .PHONY: dist
 dist:
 	mkdir dist
@@ -45,3 +48,5 @@ dev_db:
 .PHONY: stop_dev_db
 stop_dev_db:
 	docker container stop $(DB_CONTAINER_NAME)
+package: 
+	docker build -t vehicle_docker .
