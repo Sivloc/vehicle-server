@@ -1,5 +1,5 @@
 .PHONY: all
-all: clean dist build unit_test
+all: clean dist build unit_test integration_test
 .PHONY: dist
 dist:
 	mkdir dist
@@ -13,6 +13,10 @@ build:
 .PHONY: unit_test
 unit_test:
 	go test -v -cover ./...
+
+.PHONY: integration_test
+integration_test:
+	go test -v -count=1 --tags=integration ./app
 
 DB_CONTAINER_NAME=vehicle-server-dev
 POSTGRES_USER=vehicle-server
