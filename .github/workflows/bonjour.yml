@@ -22,7 +22,7 @@ jobs:
           username: sivloc
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Extract branch name
-        run: make release TAG=main
+        run: make release TAG='main'
         if: contains('refs/heads/main', github.ref)
       - name: Pushing Docker Image
         run: make release TAG=${{ github.ref_name }}
